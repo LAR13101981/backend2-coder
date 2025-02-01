@@ -13,12 +13,13 @@ Funcionalidades
 
 Tecnologías Utilizadas
 
-Node.js: JavaScript para el servidor.
-Express: Framework web para Node.js.
-Passport.js: Middleware para la autenticación, utilizando estrategias como JWT.
-JWT (JSON Web Tokens): Para la autenticación sin estado.
-Handlebars: Motor de plantillas para renderizar vistas.
-CSS: Para el estilo de la interfaz.
-dotenv: Para gestionar variables de entorno de manera segura.
-(contradictorio ya que el archivo .env se agrego al repo)
-bcrypt: Para el hashing seguro de contraseñas.
+- Node.js: JavaScript para el servidor.
+- Express: Framework web para Node.js.
+- Passport.js: Middleware para la autenticación, utilizando estrategias como JWT.
+- JWT (JSON Web Tokens): Para la autenticación sin estado.
+- Handlebars: Motor de plantillas para renderizar vistas.
+- CSS: Para el estilo de la interfaz.
+- dotenv: Para gestionar variables de entorno de manera segura.
+(contradictorio ya que el archivo .env se agrego al repo).
+- bcrypt: Para el hashing seguro de contraseñas.
+- MongoDB Atlas: Base de datos en la nube para almacenar los datos de los usuarios.
