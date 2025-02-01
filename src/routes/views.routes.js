@@ -12,6 +12,4 @@ viewRegisterRouter.get("/register", renderRegisterView);
 
 viewLoginRouter.get("/login", renderLoginView);
 
-//viewCurrentRouter.get("/current", renderCurrentView);
-
 export { viewHomeRouter, viewRegisterRouter, viewLoginRouter, viewCurrentRouter };

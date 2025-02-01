@@ -1,6 +1,5 @@
 import UserModel from "../models/user.schema.js";
-import { createHash, isValidPassword } from "../utils/bcrypt.js";
-import { generateJwtToken } from "../utils/jwt.js";
+import { createHash } from "../utils/bcrypt.js";
 
 export default class UserService {
     #userModel;
