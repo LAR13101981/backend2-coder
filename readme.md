@@ -8,8 +8,7 @@ Funcionalidades
 
 - Registro de Usuario: Permite registrar un nuevo usuario en el sistema.
 - Inicio de Sesión: Autenticación de usuarios mediante JWT utilizando la estrategia JWT de Passport.
-- Ver Información del Usuario: Después de iniciar sesión, el usuario puede ver su información (como nombre, correo electrónico y rol).
-- Cerrar Sesión: El usuario puede cerrar sesión y ser redirigido fuera del sistema.
+- Ver Información del Usuario: Después de iniciar sesión, el usuario puede ver su información.
 
 Tecnologías Utilizadas
 
@@ -20,6 +19,6 @@ Tecnologías Utilizadas
 - Handlebars: Motor de plantillas para renderizar vistas.
 - CSS: Para el estilo de la interfaz.
 - dotenv: Para gestionar variables de entorno de manera segura.
-(contradictorio ya que el archivo .env se agrego al repo).
+  (contradictorio ya que el archivo .env se agrego al repo).
 - bcrypt: Para el hashing seguro de contraseñas.
 - MongoDB Atlas: Base de datos en la nube para almacenar los datos de los usuarios.

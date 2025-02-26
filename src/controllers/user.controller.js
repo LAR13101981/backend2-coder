@@ -1,47 +1,66 @@
-import UserService from "../services/user.service.js";
-import { generateJwtToken } from "../utils/jwt.js";
+import ShowUserDTO from '../dao/dto/show-user-info.dto.js';
+import {
+  getAllUsers,
+  getUserByEmail,
+  registerNewUser,
+} from '../services/user.service.js';
+import { generateJwtToken } from '../utils/jwt.js';
 
-const userInstance = new UserService();
-
-export const httpRegisterNewUser = async (req, res)=> {
-    try {
-        const newUser = await userInstance.registerNewUser(req.body);        
-       
-        res.redirect('/api/users/login');
-    } catch (error) {
-        res.status(error.code || 500).json({ message: error.message });
-    }
+export const httpGetAllUsers = async (req, res) => {
+  try {
+    const users = await getAllUsers();
+    res.json(users);
+  } catch (error) {
+    res.status(error.code || 500).json({ message: error.message });
+  }
 };
 
-export const httpUserLogin = async(req, res)=> {
-    try {
-        const { password, ...userData} = req.user.toObject();
-        const userToken = generateJwtToken(userData);
-        
-        res
-            .cookie("authCookie", userToken, 
-                        {
-                            maxAge: 60 * 60 * 1000,
-                            httpOnly: true,
-                            signed: true
-                        })
-            .redirect("/api/sessions/current");
-       
-    } catch (error) {
-        res.status(error.code || 500).json({ message: error.message });
-    }
-}
+export const httpGetUser = async (req, res) => {
+  try {
+    const user = await getUserByEmail(req.body);
+    res.json(user);
+  } catch (error) {
+    res.status(error.code || 500).json({ message: error.message });
+  }
+};
 
-export const httpGetCurrentUser= async (req, res)=>{
-    try {
-        const user = req.user ? JSON.parse(JSON.stringify(req.user)) : null;
-        res.render("current", { 
-            title: "Detalle del Usuario",
-            styles: `<link rel="stylesheet" href="/api/public/css/style.css">`,
-            user
-            
-        });
-    } catch (error) {
-        res.status(500).send(`<h1>Error</h1><h3>${error.message}</h3>`);
+export const httpRegisterNewUser = async (req, res) => {
+  try {
+    const newUser = await registerNewUser(req.body);
+
+    res.json({ message: 'User created' });
+  } catch (error) {
+    res.status(error.code || 500).json({ message: error.message });
+  }
+};
+
+export const httpUserLogin = async (req, res) => {
+  try {
+    const { password, ...userData } = req.user.toObject();
+    const userToken = generateJwtToken(userData);
+
+    res.cookie('authCookie', userToken, {
+      maxAge: 60 * 60 * 1000,
+      httpOnly: true,
+      signed: true,
+    });   
+    res.status(200).json({ message: 'Login succesful' });
+  } catch (error) {
+    res.status(error.code || 500).json({ message: error.message });
+  }
+};
+
+export const httpGetCurrentUser = async (req, res) => {
+  try {
+    if (!req.user) {
+      return res.status(401).json({ message: 'Unauthorized. No user found.' });
     }
+    const { password, ...userData } = req.user.toObject();
+
+    const showUser = new ShowUserDTO(userData);
+
+    res.status(200).json({ user: showUser });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
 };
