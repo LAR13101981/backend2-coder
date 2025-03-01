@@ -6,6 +6,7 @@ import cookieParser from 'cookie-parser';
 import initializePassport from './src/configs/passport.config.js';
 import passport from 'passport';
 import productRouter from './src/routes/products.routes.js';
+import cartRouter from './src/routes/cart.routes.js';
 
 const app = express();
 const PORT = env.PORT;
@@ -20,6 +21,7 @@ app.use(cookieParser(FIRMA));
 
 app.use('/api/users', userRouter);
 app.use('/api/products', productRouter);
+app.use('/api/users/cart', cartRouter);
 
 initializePassport();
 app.use(passport.initialize());

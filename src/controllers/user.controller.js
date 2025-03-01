@@ -26,7 +26,7 @@ export const httpGetUser = async (req, res) => {
 
 export const httpRegisterNewUser = async (req, res) => {
   try {
-    const newUser = await registerNewUser(req.body);
+    await registerNewUser(req.body);
 
     res.json({ message: 'User created' });
   } catch (error) {
@@ -43,7 +43,7 @@ export const httpUserLogin = async (req, res) => {
       maxAge: 60 * 60 * 1000,
       httpOnly: true,
       signed: true,
-    });   
+    });
     res.status(200).json({ message: 'Login succesful' });
   } catch (error) {
     res.status(error.code || 500).json({ message: error.message });

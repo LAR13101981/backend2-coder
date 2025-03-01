@@ -14,8 +14,7 @@ export const getAllUsers = async () => {
 };
 
 export const registerNewUser = async (user) => {
-  const userDTO = { ...new CreateUserDTO(user) };
-  console.log(userDTO);
+  const userDTO = { ...new CreateUserDTO(user) };  
   const { first_name, last_name, email, age, password, role } = userDTO;
 
   try {

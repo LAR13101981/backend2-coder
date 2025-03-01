@@ -1,4 +1,4 @@
-import ProductDTO from '../dao/dto/product.dto.js';
+import ProductDTO from '../dao/dto/create-product.dto.js';
 import { productRepo } from '../repositories/index.js';
 
 export const createNewProduct = async (product) => {

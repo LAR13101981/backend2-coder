@@ -14,11 +14,11 @@ export default class UserRepository {
     return await this.dao.getUser(user);
   }
 
-  async getUserById(user) {
-    return await this.dao.getUserById(user);
-  }
-
   async createNewUser(user) {
     return await this.dao.createUser(user);
+  }
+
+  async updateUser(id, updatedData) {
+    return await this.dao.updateUser(id, updatedData);
   }
 }

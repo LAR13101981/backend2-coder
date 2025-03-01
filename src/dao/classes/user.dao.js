@@ -15,7 +15,7 @@ export default class UserDAO {
     return await UserModel.create(user);
   };
 
-  updateUser = async (user) => {
-    return await UserModel.findupdateOne(user);
-  };  
+  updateUser = async (id, user) => {
+    return await UserModel.findByIdAndUpdate(id, user);
+  };
 }
